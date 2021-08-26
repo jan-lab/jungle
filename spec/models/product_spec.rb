@@ -8,7 +8,6 @@ RSpec.describe Product, type: :model do
       @category1 = Category.new(:name => 'Apparel')
       @category1.save
       @product = Product.new(:name => "magic keyboard", :price => 30, :quantity => 1, :category => @category1)
-    
     end
 
     it "return true if the product name exists" do

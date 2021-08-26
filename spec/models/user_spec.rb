@@ -26,10 +26,9 @@ RSpec.describe User, type: :model do
       # TEST@TEST.com should not be allowed if test@test.COM is in the database)'
       user2 = User.new(:first_name => "Kelly", :last_name => "Hue", :email => 'abc@email.com', :password => "123456")
       user2.password_confirmation = "123456"
-      # puts user2.email 
       user2.valid?
-      puts user2.valid?
-      puts "errors.full_messages: " + user2.errors.full_messages.to_s
+      # puts user2.valid?
+      # puts "errors.full_messages: " + user2.errors.full_messages.to_s
       expect(user2.errors.full_messages).to include("Email has already been taken")
     end
 
@@ -52,7 +51,6 @@ RSpec.describe User, type: :model do
       user2.password_confirmation = "123456"
       user2.valid?
       expect(user2.errors.full_messages).to include("First name can't be blank")
-
     end
     
     it "returns true if last name is blank" do
@@ -68,21 +66,25 @@ RSpec.describe User, type: :model do
       user2.valid?
       expect(user2.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
+
   end
 
   describe '.authenticate_with_credentials' do
+
     # examples for this class method here
     user2 = User.new(:first_name => "Kelly", :last_name => "Hue", :email => 'abc@email.com', :password => "123456")
     user2.save
 
     it 'returns true if authenticated with credentials 1' do
-    expect(User.authenticate_with_credentials(@user1.email, @user1.password).email).to eq(@user1.email)
+      expect(User.authenticate_with_credentials(@user1.email, @user1.password).email).to eq(@user1.email)
     end
     
     # puts "user2.email: " + user2.email
     it 'returns true if authenticated with credentials 2' do
-    expect(User.authenticate_with_credentials(user2.email, user2.password).email).to eq(user2.email)
+      expect(User.authenticate_with_credentials(user2.email, user2.password).email).to eq(user2.email)
     end
+  
   end
+
 end
 

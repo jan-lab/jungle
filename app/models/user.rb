@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   #validation (validating the required data is in the right form to create the user)
   validates :password_confirmation, presence: true
   validates :password, presence: true
-  validates :email, uniqueness: { case_sensitive: false } #validates :email, confirmation: { case_sensitive: false }
+  validates :email, uniqueness: { case_sensitive: false }
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
