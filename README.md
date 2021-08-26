@@ -31,3 +31,9 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
 * PostgreSQL 9.x
 * Stripe
+
+## Final Product
+
+!["Screenshot of the home page"](https://github.com/jan-lab/jungle/blob/master/docs/home.png?raw=true)
+!["Screenshot of the product details page"](https://github.com/jan-lab/jungle/blob/master/docs/product-details.png?raw=true)
+!["Screenshot of the cart page"](https://github.com/jan-lab/jungle/blob/master/docs/cart.png?raw=true)
