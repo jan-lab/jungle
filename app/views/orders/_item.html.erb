@@ -2,23 +2,18 @@
   <td>
     <%= image_tag product.image.tiny %>
   </td>
-
   <td>
     <h4><%= product.name %></h4>
   </td>
-  
   <td>
     <h5><%= product.description %></h4>
   </td>
-
   <td>
     <h5>Price: <%= humanized_money_with_symbol product.price %><h5>
   </td>
-
   <td>
   <h5><%= "Qty: "%> <%= quantity %><h5>
   </td>
-
   <td>
   <h5><%= "Total Price: "%> <%= humanized_money_with_symbol product.price * quantity %><h5>
   </td>

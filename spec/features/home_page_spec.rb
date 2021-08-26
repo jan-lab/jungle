@@ -25,7 +25,6 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     save_screenshot
 
     # VERIFY
-    #We set our first expectation of content we expect the user to see on the page. Since each _product partial renders an article with class product, we are expecting to find at least one on the page. 
     #our home page is expected to list ALL products
     expect(page).to have_css 'article.product', count: 10
   end

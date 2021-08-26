@@ -1,13 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
-  before do
-    @user1 = User.new(:first_name => "Helen", :last_name => "Queue", :email => 'abc@email.com', :password => "123456", :password_confirmation => "123456")
-    
-    @user1.save!
-    # @user3 = User.new(:first_name => "Haha", :last_name => "Que", :email => 'def@email.com', :password => "Password")
 
+  before do
+    @user1 = User.new(:first_name => "Helen", :last_name => "Queue", :email => 'abc@email.com', :password => "123456", :password_confirmation => "123456")    
+    @user1.save!
   end
   
   describe '#create' do
@@ -26,16 +23,10 @@ RSpec.describe User, type: :model do
     end
 
     it 'returns true if email is not unique (email is not case sensitive)' do
-      #TEST@TEST.com should not be allowed if test@test.COM is in the database)'
-      # user1 = User.new(:first_name => "Helen", :last_name => "Queue", :email => 'abc@email.com', :password => "123456")
-      # user1.save
-      # puts @user1.email
+      # TEST@TEST.com should not be allowed if test@test.COM is in the database)'
       user2 = User.new(:first_name => "Kelly", :last_name => "Hue", :email => 'abc@email.com', :password => "123456")
-      # user2 = User.new(:first_name => "Kelly", :last_name => "Hue", :email => 'ABC@EMAIL.COM', :password => "123456")
-      # user2 = User.new(:first_name => "Kelly", :last_name => "Hue", :email => 'honey@email.COM', :password => "123456")
       user2.password_confirmation = "123456"
-      # puts user2.email
-      
+      # puts user2.email 
       user2.valid?
       puts user2.valid?
       puts "errors.full_messages: " + user2.errors.full_messages.to_s
@@ -81,23 +72,17 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     # examples for this class method here
-    user2 = User.new(:first_name => "Kelly", :last_name => "Hue", :email => 'abc@email.com', :password => "123456") #if password_digest is used, it errors out for some reason
+    user2 = User.new(:first_name => "Kelly", :last_name => "Hue", :email => 'abc@email.com', :password => "123456")
     user2.save
 
     it 'returns true if authenticated with credentials 1' do
     expect(User.authenticate_with_credentials(@user1.email, @user1.password).email).to eq(@user1.email)
     end
     
-    puts "user2.email: " + user2.email
-    
-    puts User.authenticate_with_credentials('abc@email.com', "123456")
-    # puts User.authenticate_with_credentials(user2.email, user2.password)
+    # puts "user2.email: " + user2.email
     it 'returns true if authenticated with credentials 2' do
     expect(User.authenticate_with_credentials(user2.email, user2.password).email).to eq(user2.email)
     end
-
-
   end
-
 end
 

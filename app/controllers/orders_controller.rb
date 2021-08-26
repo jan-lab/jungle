@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
   private
 
   def empty_cart!
-    # empty hash means no products in cart :)
+    # empty hash means no products in cart
     update_cart({})
   end
 
@@ -52,8 +52,10 @@ class OrdersController < ApplicationController
         total_price: product.price * quantity
       )
     end
+    
     order.save!
     order
+    
   end
 
 end

@@ -1,11 +1,7 @@
 require 'rails_helper'
 
-# RSpec.feature "ProductDetails", type: :feature do
-#   pending "add some scenarios (or delete) #{__FILE__}"
-# end
-
 #to use the javascript-enabled (ie real) browser by specifying js: true in the feature declaration
-RSpec.feature "Visitor navigates to product details", type: :feature, js: true do
+RSpec.feature "Visitor adds a product to cart", type: :feature, js: true do
 
   # SETUP
   before :each do
@@ -22,19 +18,19 @@ RSpec.feature "Visitor navigates to product details", type: :feature, js: true d
     end
   end
 
-  scenario "They see product details" do
+  scenario "They see cart updated" do
     # ACT
     visit root_path
 
-    first("article.product").find_link("Details").click
+    first("article.product").find_button("Add").click
     
     # DEBUG - use screenshots to debug
     save_screenshot
 
     # VERIFY
-    #to output the current HTML being rendered by our browser
-    #puts page.html
-    expect(page).to have_content 'Quantity'
+    # to output the current HTML being rendered by our browser
+    # puts page.html
+    expect(page).to have_content 'My Cart (1)'
     
   end
 

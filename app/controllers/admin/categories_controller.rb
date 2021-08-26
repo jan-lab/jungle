@@ -11,6 +11,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
+    
     @category = Category.new(category_params)
 
     if @category.save
@@ -18,6 +19,7 @@ class Admin::CategoriesController < ApplicationController
     else
       render :new
     end
+    
   end
 
   private
@@ -25,7 +27,6 @@ class Admin::CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(
       :name
-      # :description
     )
   end
 

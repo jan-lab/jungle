@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, unless: -> { password.blank? }
   validates :password, confirmation: { case_sensitive: true }
 
-  #authentication (use has already been created)
+  #authentication (for users already created)
   def self.authenticate_with_credentials(email, password)
     @user = User.find_by(email: email)
     if @user && @user.authenticate(password)

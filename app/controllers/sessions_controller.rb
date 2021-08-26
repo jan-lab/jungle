@@ -2,9 +2,10 @@
 
 class SessionsController < ApplicationController
 
-  #Add a before_filter to any controller that you want to secure. This will force user's to login before they can see the actions in this controller. The routes for this controller were added to the routes.rb
-  #Compass instruction: For now, don't restrict any pages from access. Visitors and Users can view any page and perform the same actions.
+  # Add a before_filter to any controller that you want to secure. This forces user's to log in before they can see the   actions in this controller. The routes for this controller were added to the routes.rb.
   # before_filter :authorize
+  # (since the following is commented out (for the purpose of this exercise), both visitors and users can view any page and perform the same actions.)
+
 
   def new
   end
@@ -23,7 +24,7 @@ class SessionsController < ApplicationController
   #   end
   # end
 
-  # in your SessionsController
+  
   def create
     if user = User.authenticate_with_credentials(params[:email], params[:password])
       # success logic, log them in
@@ -40,5 +41,6 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to '/login'
   end
+
 end
 
